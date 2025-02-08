@@ -3,7 +3,6 @@
 import { use, useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { PlusIcon } from '@heroicons/react/24/outline';
 
 export default function NewMonitorPage({
   params,

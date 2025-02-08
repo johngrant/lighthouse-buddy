@@ -3,6 +3,7 @@
 import { use, useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { Monitor } from '@/types/monitor';
 
 const metrics = [
   { id: 'performance', name: 'Performance Score' },
@@ -397,7 +398,7 @@ export default function NewAlertPage({
                     onChange={(e) => {
                       const monitors = JSON.parse(localStorage.getItem('monitors') || '[]');
                       if (e.target.checked) {
-                        setSelectedMonitors(monitors.map((m: any) => m.id));
+                        setSelectedMonitors(monitors.map((m: Monitor) => m.id));
                       } else {
                         setSelectedMonitors([]);
                       }
@@ -414,7 +415,7 @@ export default function NewAlertPage({
                 </div>
               </div>
               <div className="divide-y divide-gray-200">
-                {JSON.parse(localStorage.getItem('monitors') || '[]').map((monitor: any) => (
+                {JSON.parse(localStorage.getItem('monitors') || '[]').map((monitor: Monitor) => (
                   <div key={monitor.id} className="flex items-center justify-between px-4 py-3">
                     <div className="flex items-center">
                       <input

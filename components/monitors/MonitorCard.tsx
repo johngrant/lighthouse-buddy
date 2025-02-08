@@ -1,15 +1,15 @@
 'use client';
 
-import { Monitor } from '@/types/monitor';
+import { Region } from '@/types/region';
 import Image from 'next/image';
 import Link from 'next/link';
 
 interface MonitorCardProps {
   name: string;
   url: string;
-  region: string;
-  status: 'loading' | 'active' | 'error';
-  org: string;
+  region: Region;
+  status?: 'waiting' | 'active' | 'error';
+  org?: string;
 }
 
 export default function MonitorCard({ name, url, region, status, org }: MonitorCardProps) {
@@ -33,10 +33,10 @@ export default function MonitorCard({ name, url, region, status, org }: MonitorC
               height={15}
               className="rounded-sm"
             />
-            <span className="text-gray-600">{region}</span>
+            <span className="text-gray-600">{region.name}</span>
           </div>
           <div className="text-gray-500">
-            {status === 'loading' && 'Waiting for data'}
+            {status === 'waiting' && 'Waiting for data'}
           </div>
         </div>
       </div>

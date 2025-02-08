@@ -1,11 +1,8 @@
 'use client';
 
-import MarketingNav from '../../../components/MarketingNav';
-
 export default function MonitoringPage() {
   return (
     <div className="min-h-screen bg-white">
-      <MarketingNav />
       
       <main>
         {/* Hero Section */}
@@ -29,7 +26,7 @@ export default function MonitoringPage() {
             <div>
               <h2 className="text-2xl font-bold text-gray-900">Periodic Lighthouse Checks</h2>
               <p className="mt-4 text-lg text-gray-500">
-                Daily or hourly Lighthouse checks from any location around the globe. Monitor your website's performance consistently and catch issues before they impact users.
+                Daily or hourly Lighthouse checks from any location around the globe. Monitor your website&apos;s performance consistently and catch issues before they impact users.
               </p>
             </div>
 
@@ -37,7 +34,7 @@ export default function MonitoringPage() {
             <div>
               <h2 className="text-2xl font-bold text-gray-900">Global Coverage</h2>
               <p className="mt-4 text-lg text-gray-500">
-                Monitor your site performance across your customers' key markets. Run tests from 16 locations around the world to ensure consistent performance globally.
+                Monitor your site performance across your customers&apos; key markets. Run tests from 16 locations around the world to ensure consistent performance globally.
               </p>
             </div>
 
@@ -53,7 +50,7 @@ export default function MonitoringPage() {
             <div>
               <h2 className="text-2xl font-bold text-gray-900">Smart Notifications</h2>
               <p className="mt-4 text-lg text-gray-500">
-                Get notified when your performance scores change. Stay on top of your website's performance with email alerts and webhook notifications.
+                Get notified when your performance scores change. Stay on top of your website&apos;s performance with email alerts and webhook notifications.
               </p>
             </div>
           </div>

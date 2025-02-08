@@ -1,8 +1,6 @@
 'use client';
 
-import { use, useState } from 'react';
-import { Tab } from '@headlessui/react';
-import { PlusIcon } from '@heroicons/react/24/outline';
+import { useState } from 'react';
 import NewTokenModal from './components/NewTokenModal';
 import ManageWebhookModal from './components/ManageWebhookModal';
 
@@ -33,15 +31,12 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function ApiPage({
-  params,
-}: {
+export default function ApiPage({}: {
   params: Promise<{ org: string }>;
 }) {
-  const { org } = use(params);
   const [selectedTab, setSelectedTab] = useState(0);
   const [tokens, setTokens] = useState<Token[]>([]);
-  const [logs, setLogs] = useState<LogEntry[]>([]);
+  const [logs] = useState<LogEntry[]>([]);
   const [webhook, setWebhook] = useState({
     status: 'disabled',
     events: 'N/A',

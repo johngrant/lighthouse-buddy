@@ -10,9 +10,8 @@ interface TeamSettings {
 }
 
 export default function GeneralSettingsPage({
-  params,
 }: {
-  params: { org: string };
+  params: Promise<{ org: string; id: string }>;
 }) {
   const [settings] = useState<TeamSettings>({
     id: '119faa22-269e-49bd-817c-347d8557fba8',

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 interface SettingsSidebarProps {
@@ -8,7 +8,6 @@ interface SettingsSidebarProps {
 }
 
 export default function SettingsSidebar({ activeTab }: SettingsSidebarProps) {
-  const router = useRouter();
   const pathname = usePathname();
   const tabs = [
     { name: 'General', href: 'general' },

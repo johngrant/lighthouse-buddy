@@ -13,9 +13,8 @@ interface Member {
 }
 
 export default function MembersSettingsPage({
-  params,
 }: {
-  params: { org: string };
+  params: Promise<{ org: string; id: string }>;
 }) {
   const [members] = useState<Member[]>([
     {

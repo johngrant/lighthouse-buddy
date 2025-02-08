@@ -37,7 +37,7 @@ export default function MeasurePage() {
               <div className="text-center">
                 <h3 className="text-2xl font-semibold mb-4">16 regions worldwide</h3>
                 <p className="text-gray-600">
-                  Measure and view your site's performance score across the world. Run Lighthouse from up to 16 regions with a single test.
+                  Measure and view your site&apos;s performance score across the world. Run Lighthouse from up to 16 regions with a single test.
                 </p>
               </div>
 

@@ -55,7 +55,7 @@ export default function ApiPage() {
                     Webhooks
                   </h3>
                   <p className="mt-3 text-lg text-gray-500">
-                    View recent webhook deliveries when necessary. Don't worry if you miss any, all webhook events are retried automatically for 24 hours.
+                    View recent webhook deliveries when necessary. Don&apos;t worry if you miss any, all webhook events are retried automatically for 24 hours.
                   </p>
                 </div>
 

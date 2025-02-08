@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-
 export default function ApiPage() {
   return (
     <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-12">

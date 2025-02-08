@@ -73,7 +73,7 @@ export default function SubscriptionPage({
 
       <div className="relative pb-8">
         <h1 className="text-4xl font-bold text-gray-900">Subscription</h1>
-        <p className="mt-1 text-gray-500">Manage your team's subscription</p>
+        <p className="mt-1 text-gray-500">Manage your team&apos;s subscription</p>
       </div>
 
       <div className="flex justify-between items-start">

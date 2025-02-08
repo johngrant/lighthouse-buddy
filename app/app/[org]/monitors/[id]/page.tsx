@@ -4,8 +4,11 @@ import { use, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeftIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Monitor } from '@/types/monitor';
+import { HistoryLabel } from '@/types/HistoryLabel';
+import { Metric, MetricData } from '@/types/metrics';
 
-const historyOptions = [
+const historyOptions: HistoryLabel[] = [
   { id: '24h', label: 'past 24 hours' },
   { id: '7d', label: 'past 7 days' },
   { id: '30d', label: 'past 30 days' },
@@ -15,7 +18,7 @@ const historyOptions = [
 ];
 
 // Sample performance data for each metric
-const metricData = {
+const metricData: MetricData = {
   'First Contentful Paint': [
     { date: '2024-01-24', value: 1.2 },
     { date: '2024-01-25', value: 1.1 },
@@ -88,7 +91,7 @@ interface MonitorDetailsProps {
 export default function MonitorDetailsPage({ params }: MonitorDetailsProps) {
   const { org, id } = use(params);
   const monitors = JSON.parse(localStorage.getItem('monitors') || '[]');
-  const monitor = monitors.find((m: any) => m.id === id);
+  const monitor = monitors.find((m: Monitor) => m.id === id);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [selectedHistory, setSelectedHistory] = useState(historyOptions[1]);
   const [selectedMetric, setSelectedMetric] = useState<string | null>(null);
@@ -258,8 +261,8 @@ export default function MonitorDetailsPage({ params }: MonitorDetailsProps) {
                       <div className="flex items-center justify-between">
                         <div className="text-sm font-medium text-gray-900">{metric}</div>
                         <div className="text-sm text-gray-500">
-                          {metricData[metric][metricData[metric].length - 1].value}
-                          {metricUnits[metric]}
+                          {metricData[metric as Metric][metricData[metric as Metric].length - 1].value}
+                          {metricUnits[metric as Metric]}
                         </div>
                       </div>
                       <div className="h-2 rounded-full bg-gray-200">
@@ -273,7 +276,7 @@ export default function MonitorDetailsPage({ params }: MonitorDetailsProps) {
                       {selectedMetric === metric && (
                         <div className="mt-4 h-48">
                           <ResponsiveContainer width="100%" height="100%">
-                            <LineChart data={metricData[metric]}>
+                            <LineChart data={metricData[metric as Metric]}>
                               <CartesianGrid strokeDasharray="3 3" />
                               <XAxis 
                                 dataKey="date" 
@@ -281,11 +284,11 @@ export default function MonitorDetailsPage({ params }: MonitorDetailsProps) {
                               />
                               <YAxis 
                                 domain={['auto', 'auto']}
-                                tickFormatter={(value) => `${value}${metricUnits[metric]}`}
+                                tickFormatter={(value) => `${value}${metricUnits[metric as Metric]}`}
                               />
                               <Tooltip
                                 labelFormatter={(date) => new Date(date).toLocaleDateString()}
-                                formatter={(value) => [`${value}${metricUnits[metric]}`, metric]}
+                                formatter={(value) => [`${value}${metricUnits[metric as Metric]}`, metric]}
                               />
                               <Line 
                                 type="monotone" 

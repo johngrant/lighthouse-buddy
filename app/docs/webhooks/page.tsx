@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-
 export default function WebhooksPage() {
   return (
     <div className="prose max-w-none">
@@ -13,7 +11,7 @@ export default function WebhooksPage() {
         <p className="text-gray-600 mb-4">Lighthouse Metrics can send webhook notifications when various events occur in your account. Available events include:</p>
         <ul className="list-disc pl-6 space-y-2 text-gray-600">
           <li>monitor.created - When a new monitor is created</li>
-          <li>monitor.updated - When a monitor's configuration is changed</li>
+          <li>monitor.updated - When a monitor&apos;s configuration is changed</li>
           <li>monitor.deleted - When a monitor is deleted</li>
           <li>check.completed - When a Lighthouse check completes</li>
           <li>alert.triggered - When an alert condition is met</li>

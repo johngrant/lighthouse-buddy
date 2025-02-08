@@ -1,13 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { use, useState } from 'react';
 import MonitorCard from '@/components/monitors/MonitorCard';
 import { Monitor } from '@/types/monitor';
 import Link from 'next/link';
 
-export default function MonitorsPage({ params }: { params: { org: string } }) {
+interface MonitorsPageProps {
+  params: Promise<{ org: string }>
+}
+
+export default function MonitorsPage({ params }: MonitorsPageProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const { org } = use(params);
 
   // Mock data - replace with real data fetching
   const monitors: Monitor[] = [
@@ -36,7 +41,7 @@ export default function MonitorsPage({ params }: { params: { org: string } }) {
           <p className="mt-1 text-sm text-gray-500">Monitor your website performance over time</p>
         </div>
         <Link
-          href={`/${params.org}/monitors/new`}
+          href={`/${org}/monitors/new`}
           className="btn-primary"
         >
           New Monitor
@@ -119,7 +124,7 @@ export default function MonitorsPage({ params }: { params: { org: string } }) {
         viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'
       } gap-4`}>
         {filteredMonitors.map((monitor) => (
-          <MonitorCard key={monitor.id} monitor={monitor} />
+          <MonitorCard key={monitor.id} {...monitor} />
         ))}
       </div>
     </div>

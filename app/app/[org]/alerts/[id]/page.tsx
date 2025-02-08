@@ -4,6 +4,8 @@ import { use, useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { Monitor } from '@/types/monitor';
+import { Alert } from '@/types/alert';
 
 const metrics = [
   { id: 'performance', name: 'Performance Score' },
@@ -58,14 +60,14 @@ export default function UpdateAlertPage({
 
   // Get monitors from localStorage
   const monitors = JSON.parse(localStorage.getItem('monitors') || '[]');
-  const filteredMonitors = monitors.filter((monitor: any) => 
+  const filteredMonitors = monitors.filter((monitor: Monitor) => 
     monitor.name.toLowerCase().includes(monitorFilter.toLowerCase())
   );
 
   useEffect(() => {
     // Get alert data from localStorage
     const alerts = JSON.parse(localStorage.getItem('alerts') || '[]');
-    const alert = alerts.find((a: any) => a.id === id);
+    const alert = alerts.find((a: Alert) => a.id === id);
     if (alert) {
       setFormData({
         name: alert.name,
@@ -149,7 +151,7 @@ export default function UpdateAlertPage({
     const alerts = JSON.parse(localStorage.getItem('alerts') || '[]');
     
     // Update the alert
-    const updatedAlerts = alerts.map((alert: any) => {
+    const updatedAlerts = alerts.map((alert: Alert) => {
       if (alert.id === id) {
         return {
           ...alert,
@@ -178,7 +180,7 @@ export default function UpdateAlertPage({
     const alerts = JSON.parse(localStorage.getItem('alerts') || '[]');
     
     // Remove the alert
-    const updatedAlerts = alerts.filter((alert: any) => alert.id !== id);
+    const updatedAlerts = alerts.filter((alert: Alert) => alert.id !== id);
     
     // Save to localStorage
     localStorage.setItem('alerts', JSON.stringify(updatedAlerts));
@@ -431,7 +433,7 @@ export default function UpdateAlertPage({
                   checked={selectedMonitors.length > 0 && selectedMonitors.length === monitors.length}
                   onChange={(e) => {
                     if (e.target.checked) {
-                      setSelectedMonitors(monitors.map((m: any) => m.id));
+                      setSelectedMonitors(monitors.map((m: Monitor) => m.id));
                     } else {
                       setSelectedMonitors([]);
                     }
@@ -451,7 +453,7 @@ export default function UpdateAlertPage({
               </div>
             </div>
             <div className="divide-y divide-gray-200">
-              {filteredMonitors.map((monitor: any) => (
+              {filteredMonitors.map((monitor: Monitor) => (
                 <div key={monitor.id} className="flex items-center justify-between px-4 py-3">
                   <div className="flex items-center">
                     <input

@@ -1,6 +1,6 @@
 'use client';
 
-const flagMap = {
+const flagMap: Record<string, string> = {
   CA: '/_next/static/media/CA.9f041382.svg',
   US: '/_next/static/media/US.7987b663.svg',
   BR: '/_next/static/media/BR.dc6da8ce.svg',
@@ -17,15 +17,17 @@ const flagMap = {
   AU: '/_next/static/media/AU.65b57104.svg',
 };
 
+interface RegionFlagProps {
+  code: string;
+  name: string;
+  className?: string;
+}
+
 export default function RegionFlag({ 
   code, 
   name,
   className = "w-5 h-4 rounded-sm"
-}: { 
-  code: string;
-  name: string;
-  className?: string;
-}) {
+}: RegionFlagProps) {
   const flagSrc = flagMap[code.split('-')[0]] || flagMap.US;
 
   return (

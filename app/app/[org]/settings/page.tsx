@@ -1,7 +1,6 @@
 'use client';
 
-import { use, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import Image from 'next/image';
 
 interface TeamSettings {
@@ -39,12 +38,9 @@ interface BillingInfo {
 }
 
 export default function SettingsPage({
-  params,
 }: {
   params: Promise<{ org: string }>;
 }) {
-  const { org } = use(params);
-  const router = useRouter();
   const [activeTab, setActiveTab] = useState('General');
 
   // This would come from your API in a real application

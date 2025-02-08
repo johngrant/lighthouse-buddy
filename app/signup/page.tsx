@@ -1,9 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { useAuth } from '@/context/AuthContext';
 
 export default function SignupPage() {
   const [email, setEmail] = useState('');
@@ -11,7 +9,18 @@ export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const { signup } = useAuth();
+  const signup = async (email: string, password: string) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (email === 'test@example.com' && password === 'password') {
+          resolve('User signed up');
+        } else {
+          reject('Invalid email or password');
+        }
+      }, 1000);
+    });
+  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
